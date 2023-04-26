@@ -13,6 +13,17 @@ export default function RegisterPage() {
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
         })
+            .then(response => {
+                if (response.ok === true) {
+                    alert('successfully registered')
+                } else {
+                    alert('registration failed')
+                }
+            })
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+
+
     }
 
     return (
