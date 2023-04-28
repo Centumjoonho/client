@@ -1,22 +1,28 @@
-export default function Post() {
+import { compareAsc, format, formatISO9075 } from 'date-fns';
+import { Link } from 'react-router-dom';
+export default function Post({ _id, title, summary, content, cover, createdAt, author }) {
+
+
     return (
         <div className="post">
 
             <div className="image">
-                <img src="https://techcrunch.com/wp-content/uploads/2023/03/chatgpt-getty.jpg?w=1390&crop=1" alt="" />
+                <Link to={`/post/${_id}`}>
+                    <img src={'http://localhost:4000/' + cover} alt="" />
+                </Link>
+
             </div>
 
             <div className="texts">
-                <h2>OpenAI previews business plan for ChatGPT, launches new privacy controls</h2>
+                <Link to={`/post/${_id}`}>
+                    <h2>{title}</h2>
+                </Link>
+
                 <p className="info">
-                    <a className="author">Lee</a>
-                    <time>2023-04-26 16:45</time>
+                    <a className="author">{author.username}</a>
+                    <time>{formatISO9075(new Date(createdAt))}</time>
                 </p>
-                <p className="summary">OpenAI says that it plans to introduce a new subscription tier for ChatGPT, its viral AI-powered chatbot, tailored to the needs of enterprise customers.
-
-                    Called ChatGPT Business, OpenAI describes the forthcoming offering as “for professionals who need more control over their data as well as enterprises seeking to manage their end users.”
-
-                    “ChatGPT Business will follow our API’s data usage policies, which means that end users’ data won’t be used to train our models by default,” OpenAI wrote in a blog post published today. “We plan to make ChatGPT Business available in the coming months.”</p>
+                <p className="summary">{summary}</p>
             </div>
 
         </div>
