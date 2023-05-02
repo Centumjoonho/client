@@ -1,4 +1,4 @@
-import { compareAsc, format, formatISO9075 } from 'date-fns';
+import { formatISO9075 } from 'date-fns';
 import { Link } from 'react-router-dom';
 export default function Post({ _id, title, summary, content, cover, createdAt, author }) {
 
@@ -15,7 +15,7 @@ export default function Post({ _id, title, summary, content, cover, createdAt, a
 
             <div className="texts">
                 <Link to={`/post/${_id}`}>
-                    <h2>{title}</h2>
+                    <h3>{title}</h3>
                 </Link>
 
                 <p className="info">
